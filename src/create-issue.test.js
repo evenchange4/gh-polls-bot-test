@@ -8,13 +8,14 @@ describe('Create a issue', () => {
   let browser = puppeteer.launch({
     // headless: false,
     // slowMo: 20,
+    noSandbox: true,
   });
   let page;
 
   beforeAll(async () => {
     browser = await browser;
     page = await browser.newPage();
-    // await page.setViewport({ width: 1400, height: 1000 });
+    // await page.setViewport({ width: 1200, height: 800 });
   });
 
   afterAll(() => {
@@ -71,7 +72,7 @@ describe('Create a issue', () => {
       expect(imagesLength).toBe(3);
 
       const labelTitle = await page.$eval(
-        '#partial-discussion-sidebar > div.discussion-sidebar-item.sidebar-labels.js-discussion-sidebar-item > div > a',
+        '.discussion-item-header span.IssueLabel.d-inline-block.v-align-middle',
         el => el.title,
       );
       expect(labelTitle).toBe('Polls');
