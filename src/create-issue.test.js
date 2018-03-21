@@ -8,7 +8,7 @@ describe('Create a issue', () => {
   let browser = puppeteer.launch({
     // headless: false,
     // slowMo: 20,
-    noSandbox: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
   let page;
 
